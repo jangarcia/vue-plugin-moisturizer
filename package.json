@@ -8,7 +8,7 @@
 		"/lib/**/*.js"
 	],
 	"scripts": {
-		"test": "jest",
+		"test": "cross-env NODE_ENV=development jest",
 		"build": "rimraf lib && cross-env BABEL_ENV=production babel src --out-dir lib",
 		"prepare": "npm run test && npm run build"
 	},
