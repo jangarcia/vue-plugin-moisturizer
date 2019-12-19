@@ -8,7 +8,7 @@ class Props {
 	}
 
 	serialize(props) {
-		const convertedProps = this.serializeComponents(props);
+		const convertedProps = this.serializeComponents(props) || {};
 		const sanitizedProps = this.sanitizeProps(convertedProps);
 		return this.stringifyForAttr(sanitizedProps);
 	}
