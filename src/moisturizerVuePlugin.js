@@ -16,7 +16,7 @@ class MoisturizerVuePlugin {
 	static applyMixin(Vue) {
 		Vue.mixin({
 			created() {
-				if (typeof window === 'undefined' && this.hydrate) {
+				if (typeof window === 'undefined' && this.$attrs.hydrate) {
 					MoisturizerVuePlugin.extendAttrs(this, {
 						[config.attrs.fingerprint]: MoisturizerVuePlugin.getFingerprint(this),
 						[config.attrs.props]: MoisturizerVuePlugin.getProps(this),
