@@ -16,19 +16,13 @@ class MoisturizerVuePlugin {
 	static applyMixin(Vue) {
 		Vue.mixin({
 			created() {
-				if (typeof window === 'undefined' && this.$attrs.hydrate) {
+				if (typeof window === 'undefined' && this.$options.hydrate) {
 					MoisturizerVuePlugin.extendAttrs(this, {
 						[config.attrs.fingerprint]: MoisturizerVuePlugin.getFingerprint(this),
 						[config.attrs.props]: MoisturizerVuePlugin.getProps(this),
 						[config.attrs.slots]: MoisturizerVuePlugin.getSlots(this),
 					});
 				}
-			},
-			props: {
-				hydrate: {
-					type: Boolean,
-					default: false,
-				},
 			},
 		});
 	}
