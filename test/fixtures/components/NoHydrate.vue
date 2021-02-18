@@ -4,8 +4,7 @@
 
 <script>
 module.exports = {
-  name: "Hydrate",
-  hydrate: true
+  name: "Hydrate"
 };
 </script>
 

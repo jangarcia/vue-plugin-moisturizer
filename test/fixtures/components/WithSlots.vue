@@ -6,6 +6,7 @@
 
 <script>
   export default {
-    name: 'WithSlots'
+    name: 'WithSlots',
+    hydrate: true
   }
 </script>

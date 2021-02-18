@@ -5,6 +5,7 @@
 import { init } from './utils';
 import { render, renderToString } from '@vue/server-test-utils';
 import Hydrate from './fixtures/components/Hydrate.vue';
+import NoHydrate from './fixtures/components/NoHydrate.vue';
 import WithSlots from './fixtures/components/WithSlots.vue';
 import Fingerprint from '../src/fingerprinter';
 import config from '../src/config';
@@ -13,7 +14,6 @@ import config from '../src/config';
 test("adds the comps fingerprint as data prop if hydrate is true", () => {
   const {localVue} = init();
   const wrapper = render(Hydrate, {
-    propsData: { hydrate: true },
     localVue
   });
   const fingerprint = Fingerprint.print(Hydrate);
@@ -22,7 +22,7 @@ test("adds the comps fingerprint as data prop if hydrate is true", () => {
 
 test("does not add the the comps fingerprint as data prop if hydrate is true", () => {
   init();
-  const wrapper = render(Hydrate);
+  const wrapper = render(NoHydrate);
   expect(wrapper.attr(config.attrs.fingerprint)).toBe(undefined);
 });
 
@@ -33,7 +33,6 @@ test("can serlialize component with slot", () => {
     render: (h) => h('b', 'slot'),
   };
   const wrapper = renderToString(WithSlots, {
-    propsData: { hydrate: true },
     slots: {default: slot},
     localVue
   });
